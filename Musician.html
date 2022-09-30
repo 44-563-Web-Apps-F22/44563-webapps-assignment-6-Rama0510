@@ -13,40 +13,43 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="form1_age">Enter the secret musician name</label>
+    <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
+    <label for="form1_nick">guess the musician</label>
     <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="checkGuess()" value="check the guess">
 </form>
 
 
 <p id="result">Checking the count of Correct & Wrong answers</p>
 
-<script> 
+<script>
+   correct = 0
+    wrong = 0
 
-var correct = 0
-var wrong = 0
+   function checkGuess (){
+   console.log("Getting form values")
+     age = document.getElementById("form1_age").value
+     nick = document.getElementById("form1_nick").value
+     confirmed = confirm("Are these the values? "+age+" and "+nick)
 
-function checkGuess(){
-    console.log("Getting form values")
-    name = document.getElementById("MusicianName").value
-    guess = document.getElementById("guessName").value
-    
-    if(name === guess){
-        correct = correct + 1
-        alert("You got it right")
-        
-    } else {
-        wrong = wrong + 1 
-        alert("wrong musician")
+       out = document.getElementById("result")
+          if(age==nick){
+              alert("You got it right")
+               correct = correct+1
+            out.innerHTML = "correct answer:"+ correct +"wrong answer:"+ wrong
+          } else {
+               alert("Wrong musician")
+              wrong = wrong+1
+              out.innerHTML ="correct answer:"+ correct + "wrong answer:"+ wrong
+          }
+           }
 
-    }
-    document.getElementById("result").innerHTML = "wrong guess :" + wrong + "\n correct guess :" + correct
-}
-</script>
+    </script>
 
-</body>
-</html> 
+   
+
+    </body>
+    </html>
