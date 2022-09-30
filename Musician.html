@@ -4,46 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB APPS LAB-6</title>
+    <title>web apps lab06</title>
 </head>
- 
 <body>
-    <h1>Musician guess by RAMADEVI REDROUTHU</h1>
+    
+<h1>Musician guess by ramadevi redrouthu</h1>
 
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_age">Enter the secret musician name</label>
-    <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
 
-    <label for="form1_nick">Guess the musician </label>
+    <label for="form1_nick">What is your nickname </label>
     <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Check the guess">
+    <input type="button" onclick="resolveForm()" value="Get values from form">
 </form>
 
 
-<p id="result">Counter text will be displayed here !!! </p>
+<p id="result">Checking the count of Correct & Wrong answers</p>
 
 <script> 
-correct = 0
-wrong = 0
-function checkGuess (){
+
+var correct = 0
+var wrong = 0
+
+function checkGuess(){
     console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)   
-   
-    out = document.getElementById("result")
-    if(age==nick){     
+    name = document.getElementById("MusicianName").value
+    guess = document.getElementById("guessName").value
+    
+    if(name === guess){
+        correct = correct + 1
         alert("You got it right")
-        correct = correct+1
-        out.innerHTML = "Correct answer: "+ correct + " Wrong answer: "+ wrong
+        
     } else {
-        wrong = wrong + 1        
-        alert("Wrong Musician")
-        out.innerHTML = "Correct answer: "+ correct + " Wrong answer: "+ wrong
+        wrong = wrong + 1 
+        alert("wrong musician")
+
     }
+    document.getElementById("result").innerHTML = "wrong guess :" + wrong + "\n correct guess :" + correct
 }
 </script>
 
