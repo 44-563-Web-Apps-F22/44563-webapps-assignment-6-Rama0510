@@ -11,6 +11,7 @@
     <h1>Musician guess by RAMADEVI REDROUTHU</h1>
 
 <h2>Getting input</h2>
+
 <form>
     <label for="form1_age">Enter the secret musician name</label>
     <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
@@ -32,6 +33,7 @@ function checkGuess (){
     age = document.getElementById("form1_age").value
     nick = document.getElementById("form1_nick").value
     confirmed = confirm("Are these the values? "+age+" and "+nick)   
+   
     out = document.getElementById("result")
     if(age==nick){     
         alert("You got it right")
