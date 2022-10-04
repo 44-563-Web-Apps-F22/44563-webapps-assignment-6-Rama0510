@@ -4,7 +4,7 @@ Assignment introduction to Java Script and DOM
 
 ### Hosted at:
 
-Hosted at:https://44-563-web-apps-f22.github.io/44563-webapps-assignment-6-Rama0510/
+Hosted at:https://44-563-web-apps-f22.github.io/44563-webapps-assignment-6-Rama0510/ <br><br>
 Discount page <br>
 https://44-563-web-apps-f22.github.io/44563-webapps-assignment-6-Rama0510/discount.html <br><br>
 vacation page <br>
