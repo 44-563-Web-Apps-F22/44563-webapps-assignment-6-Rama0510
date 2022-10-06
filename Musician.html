@@ -1,104 +1,85 @@
 <!DOCTYPE html>
-
 <html>
- <head>
-    <title>Music page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"   
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-</head>
+    <head>
+        <title>Musician Workspace</title>
+    </head>
+ 
 <body>
-<h1>Musician guess by ramadevi redrouthu</h1>
-<h2>Getting input</h2>
-<div class="container">
-    <form>
-        <label for="form1_age">What is your age </label><br>
-        <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-    
-        <label for="form1_nick">What is your nickname </label><br>
-        <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br><br>
-    
-        <input type="button" onclick="resolveForm()" value="Get values from form">
-    </form>
-    <p id="result">This text will be replaced </p>
-</div>
+<h1>Musician Guess By ramadevi redrouthu</h1>
 
-<br>
-<div class="container">
-    <form>
-        <label for="form1_name">Enter the secret musician name </label><br>
-        <input type ="password" id="form1_name" name="form1_name" value="John Lennon"> <br>
-    
-        <label for="form1_guess">Guess the musician </label><br>
-        <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
-    <br>
-        <input type="button" onclick="checkGuess()" value="Check the guess">
-    </form>
-    <p id="guess">This text will be replaced </p>
-</div>
+<form>
+    <label for="MusicianName">Enter the secret musician name</label>
+    <input type ="password" id="MusicianName" name="MusicianName" value="John Lennon"> <br>
+
+    <label for="guessName">Guess the musician</label>
+    <input type ="text" id="guessName" name="guessName" autofocus> <br>
+
+    <input type="button" onclick="checkGuess();endoftheGame()" value="check the guess">
+</form>
 
 
-
-
-<div class="container">
-    <img id="img" src="redants.jpg" class="bordered mx-auto d-block" alt="redants" width="100px" hight="100px" onclick="swapImage()">
-</div>
+<p id="result">Checking the count of Correct & Wrong answers</p>
 
 <script> 
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-let correct =0;
-let wrong = 0;
-function checkGuess()
-{
-    name = document.getElementById("form1_name").value
-    guess = document.getElementById("form1_guess").value
-    out = document.getElementById("guess")
-    if(name==guess)
-    {
-        confirmed = confirm("You got it right")
-        correct += 1
-    }
-    else{
-        confirmed = confirm("Wrong Musician")   
-        wrong += 1     
-    }   
-       
-    out.innerHTML = "Correct guesses "+correct + " Wrong guesses "+ wrong
-}
+var correct = 0
+var wrong = 0
 
-let useImage = 1;
-function swapImage()
-{
-    switch(useImage)
-    {
-        case 1: document.getElementById("img").src = "redants.jpg";
-        useImage++;
-        break;
-        case 2: document.getElementById("img").src = "earwing.jpg";
-        useImage++;
-        break;
-        case 3: document.getElementById("img").src = "Underwing.jpg";
-        useImage++;
-        break;
+function checkGuess(){
+    console.log("Getting form values")
+    name = document.getElementById("MusicianName").value
+    guess = document.getElementById("guessName").value
+    
+    if(name == guess){
+        correct = correct + 1
+        alert("You got it right")
+        
+    } else {
+        wrong = wrong + 1 
+        alert("wrong musician")
+
     }
+    document.getElementById("result").innerHTML = "wrong guess :" + wrong + "\n correct guess :" + correct
 }
 </script>
+<div style="padding: 75px 75px"><img src="redants.jpg" id="bird" height="100px" width="100px" onclick="swapImage()"></div>
+    <script>
+        var useImage=1;
+        function swapImage(){
+            switch(useImage){
+                case 1:
+                document.getElementById("bird").src="redants.jpg"
+                useImage=2;
+                break;
+                case 2:
+                document.getElementById("bird").src="earwing.jpg"
+                useImage=3;
+               break;
+                case 3:
+                document.getElementById("bird").src="Underwing.jpg"
+                useImage=1;
+                break;
+            }
+        }
+    </script>
+    <script>
+        function endoftheGame()
+        {
+            
+            while (wrong==3) {
+                if (wrong >=3) {
+                    wrong -= 4
+                    alert("Sorry, game over.")
+                }
+                else {
+                    alert("You got it right")
+                    document.getElementById("result").innerHTML = "Correct count:" + correct + " " + "Wrong count:" + wrong
+                }
+           
+                }
 
+            }
+        
+        </script>
 </body>
 </html> 
